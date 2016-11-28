@@ -1,0 +1,39 @@
+{% extends "problems/base.html" %}
+
+{% block content %}
+
+        <h1>Library of Computational Benchmark Problems</h1>
+        <h2> IFToMM Technical Committee for Multibody Dynamics</p> </h2><br>
+
+        <h3>Welcome</h3>
+
+        <p class="text">This website is intended to be a tool for the international multibody dynamics
+        community to propose, solve, and refer to a collection of benchmark problems.
+        Members of the community can view the results obtained by other researchers, 
+        submit their own results for others to reference, and even propose new benchmark
+        problems that can help advance the state-of-the-art in our field.</p><br>
+
+        <h3>Browsing</h3>
+
+        <p class="text">Use the <a href="{% url 'browse' %}">browse tab</a> on the left to browse the library. Select a benchmark problem 
+        to view the system schematic and problem description, and to download existing results or upload your own.</p><br>
+
+        <h3>Contributing</h3>
+
+        <p class="text">Click the <a href="{% url 'submitproblem' %}">submit</a> tab on the left to propose a new 
+        benchmark problem. Additionally, you can also upload your results for an already proposed problem
+        from its main page. Videotutorials are available in our <a href="{% url 'faq' %}">FAQ</a> section.</p><br>
+
+        <h3>Help</h3>
+
+        <p class="text">If you get stuck, you'll always be able to consult our <a href="{% url 'faq' %}">FAQ</a> section
+        as well as <a href="{% url 'contact' %}">contact us for help</a> to ask any questions you may have. 
+        Remember that all this help will be always accessible from within the left panel.</p><br>
+
+        <h3>Follow us!</h3>
+
+        <p class="text">You can follow our improvements, tips, and latest news through our <a href="https://twitter.com/mbbenchmark" target="_top">Twitter account</a>.</p>
+
+        </br></br></br></br></br></br></br></br> 
+
+{% endblock content %}

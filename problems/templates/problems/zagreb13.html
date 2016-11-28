@@ -1,0 +1,45 @@
+{% extends "problems/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<h1>Presentations Zagreb'13</h1></br>
+<p class="text">Presentations delivered at the special session on benchmark problems held during the ECCOMAS 
+Thematic Conference Multibody Dynamics 2013, Zagreb, Croatia, July 1-4, 2013.</p></br>
+
+<div class="panel panel-default">
+
+  <table class="table table-hover">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Document</th>
+    </tr>
+    
+    <tr>
+        <td>History of Benchmark Problems in Multibody Dynamics</td>
+        <td>Werner Schiehlen</td>
+        <td class="text-center"><a href = "{% static 'presentations/zagreb13/schiehlen.pdf' %}"/><div class='glyphicon glyphicon-file tableicon'></div><a></td>
+    </tr>
+    <tr>
+        <td>Benchmark Problems for Computational Efficiency of Rigid Multibody System Dynamics</td>
+        <td>Michael Valasek, Zbynek Sika</td>
+        <td class="text-center"><a href = "{% static 'presentations/zagreb13/valasek.pdf' %}"/><div class='glyphicon glyphicon-file tableicon'></div><a></td>
+    </tr>
+    <tr>
+        <td>Benchmark Problems for Beam Models in Flexible Multibody Dynamics</td>
+        <td>Olivier A. Bauchau</td>
+        <td class="text-center"><a href = "{% static 'presentations/zagreb13/bauchau.pdf' %}"/><div class='glyphicon glyphicon-file tableicon'></div><a></td>
+    </tr>
+    <tr>
+        <td>A Library of Computational Benchmark Problems</td>
+        <td>Ramin Masoudi, Thomas Uchida, David Vilela, Alberto Luaces, Javier Cuadrado, John McPhee</td>
+        <td class="text-center"><a href = "{% static 'presentations/zagreb13/masoudi.pdf' %}"/><div class='glyphicon glyphicon-file tableicon'></div><a></td>
+    </tr>
+  </table>
+
+</div>
+</br></br></br></br>
+
+
+{% endblock content %}

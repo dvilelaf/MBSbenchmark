@@ -1,0 +1,8 @@
+{% extends "problems/base.html" %}
+
+{% block content %}
+
+<h2>Your solution for "{{problem.name}}" has been correctly submitted and incorporated to our database.</h2>
+<h3>Return to the <a href="{% url 'index' %}">main page</a> or <a href="{% url 'browse' %}">keep browsing</a>.</h3>
+
+{% endblock content %}

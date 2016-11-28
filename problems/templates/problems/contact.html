@@ -1,0 +1,43 @@
+{% extends "problems/base.html" %}
+
+{% block content %}
+
+<h1>Contact</h1></br>
+<p class="text">If you are experiencing problems through the website or have any suggestions, please contact the administrator by submitting the following form.</p></br>
+
+<div class="row">
+<div class="col-xs-12 col-lg-4 col-lg-offset-4">
+
+  <form class="form-horizontal " role="form" action="{% url 'contact' %}" method = "post">
+  {% csrf_token %}
+  {{ form.errors }}
+  {{ form.non_field_errors }}
+
+    <div class="form-group fieldWrapper">
+      {{ form.name.errors }}
+   	  <label for="{{ form.name.id_for_label }}" class="control-label">{{ form.name.label }}</label>
+      <input type="text" id="{{ form.name.id_for_label }}" class="form-control" placeholder="John Doe" name="{{ form.name.html_name }}" required>
+    </div>
+
+    <div class="form-group fieldWrapper">
+      {{ form.email.errors }}
+   	  <label for="{{ form.email.id_for_label }}" class="control-label">{{ form.email.label }}</label>
+      <input type="email" id="{{ form.email.id_for_label }}" class="form-control" placeholder="jdoe@mydomain.com" name="{{ form.email.html_name }}" required>
+    </div>
+
+    <div class="form-group fieldWrapper">
+      {{ form.message.errors }}
+   	  <label for="{{ form.message.id_for_label }}" class="control-label">{{ form.message.label }}</label>
+      <textarea type="text" id="{{ form.message.id_for_label }}" class="form-control" rows="8" placeholder="Explain here your problem or suggestion." name="{{ form.message.html_name }}" required></textarea>
+    </div>
+
+    </br>
+    <button type="submit" class="btn btn-default col-xs-6 col-xs-offset-3">Submit</button>
+
+  </form>
+  </br></br></br></br>
+
+</div>
+</div>
+
+{% endblock content %}

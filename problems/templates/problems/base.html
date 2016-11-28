@@ -1,0 +1,102 @@
+{% load staticfiles %}
+
+<html>
+  <head>
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href = "{% static 'problems/bootstrap/css/bootstrap.min.css' %}" rel = "stylesheet" media = "screen">
+    <link href = "{% static 'problems/bootstrap/css/bootstrap-theme.min.css' %}" rel = "stylesheet" media = "screen">
+  	<link href = "{% static 'problems/benchmark.css' %}" rel = "stylesheet" media = "screen">
+  	<link rel="icon" type="image/png" href="{% static 'problems/favicon.ico' %}" />
+  	<title>Multibody Benchmark</title>
+  </head>
+
+  <body>
+
+  	<nav class='sidebar col-xs-2 col-sm-1 col-md-1 col-lg-1'>
+
+		  <a href="{% url 'index' %}">
+		  	<div class="bttn col-xs-1 col-sm-1 col-md-1 col-lg-1{% if tab == 'home' %} selected{% endif %}">
+		  		<div class="bttn-wrapper">
+			        <div class='bbtn-icon glyphicon glyphicon-home'></div>
+			        </br>
+			        <div class='bttn-title'>Home</div>
+		  		</div>
+		  	</div>
+		  </a>
+
+		  <a href="{% url 'browse' %}">
+		  	<div class="bttn col-xs-1 col-sm-1 col-md-1 col-lg-1{% if tab == 'browse' %} selected{% endif %}">
+		  		<div class="bttn-wrapper">
+			        <div class='bbtn-icon glyphicon glyphicon-globe'></div>
+			        </br>
+			        <div class='bttn-title'>Browse</div>
+		  		</div>
+		  	</div>	 
+		  </a>
+
+		  <a href="{% url 'submitproblem' %}">
+		  	<div class="bttn col-xs-1 col-sm-1 col-md-1 col-lg-1{% if tab == 'submit' %} selected{% endif %}">
+		  		<div class="bttn-wrapper">
+			        <div class='bbtn-icon glyphicon glyphicon-plus'></div>
+			        </br>
+			        <div class='bttn-title'>Submit</div>
+		  		</div>
+		  	</div>
+		  </a>
+
+	  	  <div class="bttn col-xs-1 col-sm-1 col-md-1 col-lg-1{% if tab == 'links' %} selected{% endif %}">
+	  	  	<div class="bttn-wrapper">
+
+		    	<div class='bbtn-icon glyphicon glyphicon-link'></div>
+		    	</br>
+		    	<div class='bttn-title'>Links</div>
+
+			    <div class="expandable">
+				    <ul>
+				    	<li><a href="{% url 'zagreb13' %}">Presentations Zagreb'13</a></li>
+				    	<li><a href="http://www.iftomm-multibody.org/">IFToMM TC for Multibody Dynamics</a></li>
+				    	<li><a href="http://iftomm.org/">IFToMM</a></li>
+				    </ul>
+			    </div>
+
+	  	    </div>
+	  	  </div>
+
+	  	  <a href="{% url 'faq' %}">
+	  	  	<div class="bttn col-xs-1 col-sm-1 col-md-1 col-lg-1{% if tab == 'faq' %} selected{% endif %}">
+	  	  		<div class="bttn-wrapper">
+			        <div class='bbtn-icon glyphicon glyphicon-question-sign'></div>
+			        </br>
+			        <div class='bttn-title'>FAQ</div>
+		  		</div>
+		  	</div>
+		  </a>
+
+		  <a href="{% url 'contact' %}">
+		  	  <div class="bttn col-xs-1 col-sm-1 col-md-1 col-lg-1{% if tab == 'contact' %} selected{% endif %}">
+		  	  	<div class="bttn-wrapper">
+			        <div class='bbtn-icon glyphicon glyphicon-envelope'></div>
+			        </br>
+			        <div class='bttn-title'>Contact</div>
+			    </div>
+			  </div>
+		  </a>
+
+    </nav>
+
+    <div class="content col-xs-8 col-xs-offset-3 col-sm-9 col-sm-offset-2 col-md-9 col-md-offset-2 col-lg-9 col-lg-offset-2">
+    {% block content %}<h2>Aqui deberia haber contenido</h2>
+    {% endblock %}
+    </div>
+
+    <footer class="footer col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="container">
+        <p class="text-muted">&copy 2016 IFToMM Technical Committee for Multibody Dynamics and the Authors</p>  
+        <p class="text-muted"><a href="{% url 'terms' %}"> Terms of use </a> &nbsp | &nbsp <a href="{% url 'contact' %}"> Feedback </a>  &nbsp | &nbsp <a href="https://twitter.com/mbbenchmark"> Follow us on Twitter </a></p>
+      </div>
+    </footer>
+
+    <script src = "{% static 'problems/bootstrap/js/bootstrap.min.js' %}"></script>
+
+  </body>
+</html>

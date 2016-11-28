@@ -1,0 +1,101 @@
+{% extends "problems/base.html" %}
+{% load problems_filters %}
+
+{% block content %}
+
+    <h1>Submit new solution<h1> 
+    <h2>{{problem.name}}</h2></br>
+
+    <h4>Please fill in the form below.</h4>
+                
+    <p class="text">The solution technical data section of the form asks for two representative values, which will be listed in the summary table of the submitted solutions for the specific benchmark problem: the accuracy (the simulation error as defined in the description file), and the efficiency (the CPU-time required to run the simulation).</p>
+
+    <p class="text">Besides the txt results file, a compressed file can be optionally uploaded containing the data file in case the author has used a commercial software to solve the problem, or the code (in C, C++,Fortran, Matlab, etc.) in case the author has programmed the algorithm to solve the problem, or any additional material that the author may consider helpful for the users.</p></br>
+
+    <div class="row">
+    <div class="col-xs-12 col-lg-6 col-lg-offset-3">
+
+    <form class="form-horizontal" role="form" action="{% url 'submitsolution' problem.name|spctolowdash %}" method = "post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.errors }}
+    {{ form.non_field_errors }}
+
+      <div class="formheader">Submit form</div>
+      </br>
+      <div class="formtitle">Personal data</div></br>
+
+      <div class="form-group fieldWrapper">
+        {{ form.username.errors }}
+        <label for="{{ form.username.id_for_label }}" class="control-label">{{ form.username.label }}</label>
+        <input type="text" id="{{ form.username.id_for_label }}" class="form-control" placeholder="John Doe" name="{{ form.username.html_name }}" required>
+      </div>
+
+      <div class="form-group fieldWrapper">
+        {{ form.email.errors }}
+        <label for="{{ form.email.id_for_label }}" class="control-label">{{ form.email.label }}</label>
+        <input type="email" id="{{ form.email.id_for_label }}" class="form-control" placeholder="jdoe@mydomain.com" name="{{ form.email.html_name }}" required>
+      </div>
+
+      <div class="form-group fieldWrapper">
+        {{ form.authors.errors }}
+        <label for="{{ form.authors.id_for_label }}" class="control-label">{{ form.authors.label }}</label>
+        <input type="text" id="{{ form.authors.id_for_label }}" class="form-control" placeholder="John Doe, Jane Doe (leave blank to default to submitter)" name="{{ form.authors.html_name }}">
+      </div>
+
+      </br></br>
+
+      <div class="formtitle">Solution technical data</div></br>
+
+      <div class="form-group fieldWrapper">
+        {{ form.accuracy.errors }}
+        <label for="{{ form.accuracy.id_for_label }}" class="control-label">{{ form.accuracy.label }}</label>
+        <input type="number" step="any" id="{{ form.accuracy.id_for_label }}" class="form-control" placeholder="0.1234" name="{{ form.accuracy.html_name }}" required>
+      </div>
+
+      <div class="form-group fieldWrapper">
+        {{ form.cputime.errors }}
+        <label for="{{ form.cputime.id_for_label }}" class="control-label">{{ form.cputime.label }}</label>
+        <input type="number" step="any" id="{{ form.cputime.id_for_label }}" class="form-control" placeholder="12.3456" name="{{ form.cputime.html_name }}" required>
+      </div>
+
+      <div class="form-group fieldWrapper">
+        {{ form.cpu.errors }}
+        <label for="{{ form.cpu.id_for_label }}" class="control-label">{{ form.cpu.label }}</label>
+        <input type="text" id="{{ form.cpu.id_for_label }}" class="form-control" placeholder="Intel Core i7 950 @ 3.07 GHz" name="{{ form.cpu.html_name }}" required>
+      </div>
+
+      <div class="form-group fieldWrapper">
+        {{ form.os.errors }}
+        <label for="{{ form.os.id_for_label }}" class="control-label">{{ form.os.label }}</label>
+        <input type="text" id="{{ form.os.id_for_label }}" class="form-control" placeholder="Debian 7 Kernel 3.5.4 (64 bits)" name="{{ form.os.html_name }}" required>
+      </div>
+
+      <div class="form-group fieldWrapper">
+        {{ form.method.errors }}
+        <label for="{{ form.method.id_for_label }}" class="control-label">{{ form.method.label }}</label>
+        <textarea type="text" id="{{ form.method.id_for_label }}" class="form-control" rows="8" placeholder="Explain as much as you can the software used, options, version, method, references or any further helpful information." name="{{ form.method.html_name }}" required></textarea>
+      </div>
+
+      <div class="form-group fieldWrapper">
+        {{ form.results.errors }}
+        <label for="{{ form.results.id_for_label }}" class="control-label">{{ form.results.label }}</label>
+        <p>Remember that the file format must meet the requirements specified in the problem description file.</p>
+        <input type="file" id="{{ form.results.id_for_label }}" class="form-control"  name="{{ form.results.html_name }}" required>
+      </div>
+
+      <div class="form-group fieldWrapper">
+        {{ form.miscellaneous.errors }}
+        <label for="{{ form.miscellaneous.id_for_label }}" class="control-label">{{ form.miscellaneous.label }}</label>
+        <p>Include here all relevant data. If you want to upload multiple files, please include all of them inside a zip file.</p>
+        <input type="file" id="{{ form.miscellaneous.id_for_label }}" class="form-control"  name="{{ form.miscellaneous.html_name }}">
+      </div>
+
+      </br></br>
+      <button type="submit" class="btn btn-default col-xs-6 col-xs-offset-3 col-lg-4 col-lg-offset-4">Submit</button>
+      </br></br></br></br></br></br></br></br>
+
+    </form>
+    </div>
+    </div>
+
+{% endblock content %}

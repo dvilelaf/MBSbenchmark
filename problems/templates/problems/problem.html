@@ -1,0 +1,83 @@
+{% extends "problems/base.html" %}
+{% load staticfiles %}
+{% load problems_filters %}
+
+{% block content %}
+
+<div class="row">
+<h1 class="text-left">{{problem.name}}</h1>
+<h3>Submitted by {{problem.user.name}}</h3>
+<h4>Authors: {{problem.authors}}</h4>
+</div>
+
+</br></br>
+
+<div class="row">
+
+    <div class="col-sm-12 col-md-6 col-lg-5">
+      <div class="thumbnail">
+      	</br><h4 class="text-center">Click on the image to check the description file</h4></br>
+        <a href = "{{ MEDIA_URL }}{{problem.description.name}}"><img src="{{ MEDIA_URL }}{{problem.image.name}}" alt="{{problem.name}} image"  title="{{problem.name}}"></a>
+      	</br>
+      </div>
+    </div>
+
+	<div class="panel panel-default col-sm-12 col-md-6 col-lg-6">
+	<table class="table table-hover">
+		<tr>
+			<th>Submitter</th>
+			<th>Accuracy</th>
+			<th>CPU time</th>
+			<th class="text-center">Results</th>
+			<th class="text-center">Solution details</th>
+		</tr>
+
+		<tr>
+			<td>{{ref_solution.user.name}}</td>
+			<td>{{ref_solution.accuracy}}</td>
+			<td>{{ref_solution.cputime}}</td>
+			<td class="text-center"><a href = "{{ MEDIA_URL }}{{ref_solution.results.name}}" download="{{problem.name}} - results (by {{ref_solution.user.name}})({{ref_solution.id}}).txt"><div class='glyphicon glyphicon-file tableicon'></div></a></td>
+			<td class="text-center"><a href = "{% url 'solution' ref_solution.id %}"><div class='glyphicon glyphicon-search tableicon'></div></a></td>
+		</tr>
+	</table>
+	</br>
+
+	{% if solutions %}
+	<table class="table table-hover">
+		<tr>
+			<th>Users</th>
+			<th>Accuracy</th>
+			<th>CPU time</th>
+			<th class="text-center">Results</th>
+			<th class="text-center">Solution details</th>
+		</tr>
+
+		{% for solution in solutions %}
+		<tr>
+			<td>{{solution.user.name}}</td>
+			<td>{{solution.accuracy}}</td>
+			<td>{{solution.cputime}}</td>
+			<td class="text-center"><a href = "{{ MEDIA_URL }}{{solution.results.name}}" download="{{problem.name}} - results (by {{solution.user.name}})({{solution.id}}).txt"><div class='glyphicon glyphicon-file tableicon'></div></a></td>
+			<td class="text-center"><a href = "{% url 'solution' solution.id %}"><div class='glyphicon glyphicon-search tableicon'></div></a></td>
+		</tr>
+		{% endfor %}
+
+	</table>
+	{% endif%}
+
+	</br>
+
+	<form action="{% url 'submitsolution' problem.name|spctolowdash %}">
+	<input type="submit" class="btn btn-default bigbutton col-xs-6 col-xs-offset-3" value="Submit new solution">
+	</form>
+
+	</br></br></br>
+
+	</div>
+
+</div>
+</br></br></br></br></br></br>
+
+
+
+{% endblock content %}

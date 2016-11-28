@@ -1,0 +1,106 @@
+{% extends "problems/base.html" %}
+{% load problems_filters %}
+
+{% block content %}
+	
+<div class="row filterbar col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <form class="form-horizontal" role="form" action="{% url 'browse' %}" method = "post">
+  {% csrf_token %}
+  {{ form.errors }}
+  {{ form.non_field_errors }}
+
+      <div class="filter form-group fieldWrapper col-xs-12 col-sm-6 col-md-4 col-lg-2">
+        {{ form.application.errors }}
+        <label for="{{ form.application.id_for_label }}" class="control-label">{{ form.application.label }}</label>
+        <select class="form-control" id="{{ form.application.id_for_label }}" name="{{ form.application.html_name }}">
+        	<option value="ANY" {% if ap == 'ANY' %}selected="selected"{% endif %}>-- Any --</option>
+        {% for groupName, group in application_choices %}
+            <optgroup label="{{groupName}}">
+            {% for optionCode, optionName in group %}
+                <option value="{{optionCode}}" {% if ap == optionCode %}selected="selected"{% endif %}>{{optionName}}</option>
+            {% endfor %}
+            </optgroup>
+        {% endfor %}
+        </select>
+      </div>
+
+      <div class="filter form-group fieldWrapper col-xs-12 col-sm-6 col-md-4 col-lg-2">
+        {{ form.topology.errors }}
+        <label for="{{ form.topology.id_for_label }}" class="control-label">{{ form.topology.label }}</label>
+        <select class="form-control" id="{{ form.topology.id_for_label }}" name="{{ form.topology.html_name }}">
+        	<option value="ANY">-- Any --</option>
+        {% for optionCode, optionName in topology_choices %}
+            <option value="{{optionCode}}" {% if to == optionCode %}selected="selected"{% endif %}>{{optionName}}</option>
+        {% endfor %}
+        </select>
+      </div>
+
+      <div class="filter form-group fieldWrapper col-xs-12 col-sm-6 col-md-4 col-lg-2">
+        {{ form.flexibility.errors }}
+        <label for="{{ form.flexibility.id_for_label }}" class="control-label">{{ form.flexibility.label }}</label>
+        <select class="form-control" id="{{ form.flexibility.id_for_label }}" name="{{ form.flexibility.html_name }}">
+        	<option value="ANY">-- Any --</option>
+        {% for optionCode, optionName in flexibility_choices %}
+            <option value="{{optionCode}}" {% if fl == optionCode %}selected="selected"{% endif %}>{{optionName}}</option>
+        {% endfor %}
+        </select>
+      </div>
+
+      <div class="filter form-group fieldWrapper col-xs-12 col-sm-6 col-md-4 col-lg-2">
+        {{ form.analysis.errors }}
+        <label for="{{ form.analysis.id_for_label }}" class="control-label">{{ form.analysis.label }}</label>
+        <select class="form-control" id="{{ form.analysis.id_for_label }}" name="{{ form.analysis.html_name }}">
+        	<option value="ANY">-- Any --</option>
+        {% for optionCode, optionName in analysis_choices %}
+            <option value="{{optionCode}}" {% if an == optionCode %}selected="selected"{% endif %}>{{optionName}}</option>
+        {% endfor %}
+        </select>
+      </div>
+
+      <div class="filter form-group fieldWrapper col-xs-12 col-sm-6 col-md-4 col-lg-2">
+        {{ form.contact.errors }}
+        <label for="{{ form.contact.id_for_label }}" class="control-label">{{ form.contact.label }}</label>
+        <select class="form-control" id="{{ form.contact.id_for_label }}" name="{{ form.contact.html_name }}">
+        	<option value="ANY">-- Any --</option>
+        {% for optionCode, optionName in contact_choices %}
+            <option value="{{optionCode}}" {% if co == optionCode %}selected="selected"{% endif %}>{{optionName}}</option>
+        {% endfor %}
+        </select>
+      </div>
+
+      <div class="filter col-xs-12 col-sm-6 col-md-4 col-lg-2">
+      	 <button type="submit" class="btn btn-default filterbutton">Filter</button>
+      </div>
+
+  </form>
+</div>
+
+<div class="row">
+
+{% if not problems %}
+	<div class="row text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<h3>No problem in the library matches the selected filters.</h3></br></br></br>
+	</div>
+{% endif %}
+
+{% for problem in problems %}
+
+  <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 thumbnailcontainer">
+    <div class="thumbnail">
+      <div class="img-container">
+        <img class="img-responsive" src="{{ MEDIA_URL }}{{problem.image.name}}" alt="{{problem.name}} image"  title="{{problem.name}}">
+      </div>
+      <div class="caption">
+        <div class="thumbnailheader" title="{{problem.name}}"><h3>{{problem.name}}</h3></div>
+        <p>by {{problem.user.name}}</p>
+        <p><a href="{% url 'problem' problem.name|spctolowdash %}" class="btn btn-default center-block" role="button">Open</a></p>
+      </div>
+    </div>
+  </div>
+
+{% endfor %}
+</div>
+
+</br></br></br></br>
+  
+{% endblock content %}

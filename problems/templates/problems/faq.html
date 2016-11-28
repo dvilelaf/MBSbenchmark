@@ -1,0 +1,85 @@
+{% extends "problems/base.html" %}
+
+{% block content %}
+
+    <div class="text">
+        <h1>Frequently Asked Questions</h1><br>
+
+        <h3>What is this place and what can I do here?</h3>
+        
+        <p>
+        This website is intended to be a tool for the international multibody dynamics community to
+        propose, solve, and refer to a collection of benchmark problems. Members of the community can
+        view the results obtained by other researchers, submit their own results for others to reference,
+        and even propose new benchmark problems that can help advance the state-of-the-art in our field.
+        </p><br>
+        
+        <h3>How can I access the information?</h3>
+        
+        <p>
+        The tabs on the left will let you navigate through the site. The <a href="{% url 'browse' %}">browse tab</a>
+        will show you every problem in the database and will allow you to filter those problems by their classification.
+        To open a problem, just click on its open button. Once inside a problem, you can take a look at its description and get 
+        the solutions uploaded by other users, as well as submit your own.
+        </p><br>
+        
+        <h3>I would like to submit a solution to an existing problem.</h3>
+        
+        <p>
+        You can always submit your solution from within any problem's main page. Click the 'submit new solution' button and you will be redirected to a form which
+        you should fill in. Your name, email, solution's technical data and results file will be required.
+        </p><br>
+
+        <div class="video">
+            <iframe width="420" height="240" src="http://www.youtube.com/embed/jEQPbcOyapQ"></iframe>
+        </div>
+        </br></br>
+        
+        <h3>I would like to submit a new problem</h3>
+        
+        <p>
+        Visit the <a href="{% url 'submitproblem' %}">submit problem</a> tab in the sidebar, and fill in the
+        required data: name, email, problem's classification, description file, solution's technical data and
+        results file (and optional miscellaneous file). Once submitted, we will review your problem and notify you in case something is wrong
+        or missing, as well as when it is incorporated to the database.
+        </p><br>
+
+        <div class="video">
+            <iframe width="420" height="240" src="http://www.youtube.com/embed/gGj2tn-ndlQ"></iframe>
+        </div>
+        </br></br>
+                  
+        <h3>I'm trying to submit a new problem, but it doesn't match any existing category.</h3>
+        
+        <p>
+        If you consider we need to add a new category, please <a href="{% url 'contact' %}">contact us</a> to 
+        request a new one. We'll study the situation and add it if necessary.
+        </p><br>               
+        
+        <h3>Can I change my solution once submitted?</h3>
+        
+        <p>
+        Sure. Feel free to submit your new solution, but please notify us so we can delete the old one. As
+        registration is not required, only the administrator can modify the database to keep it safe. You can
+        use our <a href="{% url 'contact' %}">contact form</a>.
+        </p><br>
+        
+        <h3>Can I change a problem once submitted?</h3>
+        
+        <p>
+        Of course, you can. If something is wrong with your submission, you can either re-upload the problem
+        or email us explaining the required changes (remember to attach any file if needed). In any case, you should
+        <a href="{% url 'contact' %}">contact us</a> explaining the situation
+        so we are aware of it and delete the old submission.
+        </p><br>
+        
+        <h3>I have more questions</h3>
+        
+        <p>
+        Feel free to use our <a href="{% url 'contact' %}">contact form</a>. We will contact you as soon as possible.
+        </p><br>
+
+    </div>
+    </br></br></br></br></br></br></br></br>
+
+{% endblock content %}

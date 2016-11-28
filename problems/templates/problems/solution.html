@@ -1,0 +1,58 @@
+{% extends "problems/base.html" %}
+
+{% block content %}
+
+<div class="row">
+<h1 class="text-left">Solution for {{solution.problem.name}}</h1>
+<h3>Submitted by {{solution.user.name}}</h3>
+</div>
+
+</br></br>
+
+<div class=" col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
+<table class="table table-hover">
+	<tr>
+		<td>Authors</td>
+		<td>{{solution.authors}}</td>
+	</tr>
+	<tr>
+		<td>Email</td>
+		<td>{{solution.user.email}}</td>
+	</tr>
+	<tr>
+		<td>Accuracy</td>
+		<td>{{solution.accuracy}}</td>
+	</tr>
+	<tr>
+		<td>CPU time</td>
+		<td>{{solution.cputime}}</td>
+	</tr>
+	<tr>
+		<td>CPU / GPU</td>
+		<td>{{solution.cpu}}</td>
+	</tr>
+	<tr>
+		<td>Operating System</td>
+		<td>{{solution.os}}</td>
+	</tr>
+	<tr>
+		<td>Method description</td>
+		<td>{{solution.method|linebreaks}}</td>
+	</tr>
+	<tr>
+		<td>Results file</td>
+		<td><a href = "{{ MEDIA_URL }}{{solution.results.name}}" download="{{solution.problem.name}} - results (by {{solution.user.name}})({{solution.id}}).txt"><div class='glyphicon glyphicon-file tableicon'></div></a></td>
+	</tr>
+	{% if solution.miscellaneous %}
+	<tr>
+		<td>Miscellaneous file</td>
+		<td><a href = "{{ MEDIA_URL }}{{solution.miscellaneous.name}}" download="{{solution.problem.name}} - miscellaneous (by {{solution.user.name}})({{solution.id}}).zip"><div class='glyphicon glyphicon-file tableicon'></div></a></td>
+	</tr>
+	{% endif %}
+</table>
+</br></br></br></br>
+</div>
+
+
+
+{% endblock content %}

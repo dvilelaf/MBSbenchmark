@@ -1,0 +1,222 @@
+html 
+{
+  position: relative;
+  min-height: 100%;
+}
+
+body 
+{
+  margin-bottom: 120px;
+}
+
+.content
+{
+	margin-bottom: 5rem;
+	padding-top: 3rem;
+
+}
+
+.content .text
+{
+	font-size: 1.2em;
+	text-align: justify;
+}
+
+.tableicon
+{
+	font-size: 4rem;
+	color: #262626;
+}
+
+.formheader
+{
+	font-size: 3rem;
+	text-align: center;
+}
+
+.formtitle
+{
+	font-size: 2rem;
+	text-align: center;
+	border-bottom: 1px solid;
+}
+
+form button,
+{
+	height: 6rem;
+}
+
+.filterbar .form-horizontal .form-group
+{
+	margin-left: 0;
+}
+
+.filterbar
+{
+	padding-top: 10px;
+	background-color: #efefef;
+	z-index: 1002;
+	margin-bottom: 50px;
+}
+
+.filter
+{
+	padding-left: 30px;
+	padding-right: 30px;
+
+}
+
+.bigbutton
+{
+	height: 4rem;
+}
+
+.filterbutton
+{
+	margin-top: 25px;
+	margin-bottom: 25px;
+	width: 100%;
+}
+
+.thumbnailcontainer
+{
+	margin-top: 2rem;
+	margin-right: 2rem;
+	margin-bottom: 2rem;
+	margin-left: 2rem;
+}
+
+.thumbnailheader h3, 
+.thumbnail p
+{
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	display: block; 
+}
+
+.img-container
+{
+	height: 15%;
+}
+
+.img-responsive
+{
+	max-height: 100%;
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.video
+{
+	text-align: center;
+}
+
+/*Sidebar and buttons ----------------------------------*/
+
+nav.sidebar 
+{
+	position: fixed;
+	left: 0px;
+	height: 100%;
+	max-width: 100px;
+	background: #262626;
+	font-family: sans-serif;
+	z-index: 1001;
+	padding: 0 0 0 0;
+}
+
+.bttn
+{
+	width: 100%;
+	max-width: 100%;
+	padding: 0 0 0 0;
+	color: #788FBF;
+}
+
+.bttn-wrapper
+{	
+	padding: 15px 5px 15px 5px;
+	text-align: center;
+}
+
+.bttn-title
+{
+	text-align: center;
+}
+
+.bttn .glyphicon
+{
+	font-size: 40px;
+}
+
+.bttn a
+{
+    text-decoration:none;
+    color: inherit;
+}
+
+.selected
+{
+	background-color: #efefef;
+}
+
+.bttn:hover
+{
+	background-color: #CFCFCF;
+}
+
+.expandable
+{
+	position: relative;
+}
+
+.expandable ul
+{
+	list-style: none;
+	width: 30rem;
+	margin: 0;
+	padding: 0;
+	display: none;
+	text-align: left;
+	position:absolute;
+	left: 106%;
+	top: -8rem;
+	height: 11rem;
+}
+
+.bttn:hover .expandable ul
+{
+	display: block;
+}
+
+.expandable ul li
+{
+	background-color:  #CFCFCF;
+	height: 33%;
+	padding-left: 2rem;
+	vertical-align: middle;
+	padding-top: 5px;
+}
+
+/*Footer ----------------------------------*/
+
+.footer 
+{
+	position: absolute;
+	bottom: 0;
+	height: 120px;
+	background-color: #efefef;
+	text-align: center;
+	z-index: 1000;
+}
+
+.footer .container
+{
+	margin-top: 15px;
+	margin-bottom: 0px;
+}
